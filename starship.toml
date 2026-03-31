@@ -1,16 +1,15 @@
 format = """
 $directory\
-[ ](fg:#88C0D0 bg:#1d2230)\
+[ ](fg:#0d1a26 bg:#0d1a26)\
 $git_branch\
 $git_status\
-[ ](fg:#1d2230)\
+[ ](fg:#0d1a26)\
 \n$character
 """
 
 right_format = """
 $cmd_duration\
 $username\
-✨
 $time
 """
 
@@ -18,35 +17,28 @@ $time
 add_newline = true
 
 [username]
-style_user = "white bold"
-style_root = "black bold"
-format = "user: [$user]($style) "
+style_user = "fg:#00e5ff bold"
+style_root = "fg:#ff2d6f bold"
+format = "[$user]($style) "
 disabled = false
 
-
-# left_promptとright_promptの間を何で埋めるか設定
 [fill]
 symbol = ' '
 
 [directory]
-style = "fg:#2E3440 bg:#88C0D0 bold"
-# format = "[ $path ]($style)"
+style = "fg:#050510 bg:#00e5ff bold"
 truncation_length = 10
 truncate_to_repo = false
 truncation_symbol = "…/"
-# truncation_symbol = ' ' # nf-fa-folder_open
-# truncate_to_repo = false
-# style = 'fg:#7aa2f7 bg:#1a1b26'
-read_only = ' 󰌾 ' # nf-md-lock
-read_only_style = 'fg:#f7768e bg:#1a1b26'
+read_only = ' 󰌾 '
+read_only_style = 'fg:#ff2d6f bg:#0d1a26'
 format = '[ $path ]($style)[$read_only]($read_only_style)'
-
 
 [directory.substitutions]
 "Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
 
 [aws]
 disabled = true
@@ -54,24 +46,25 @@ disabled = true
 disabled = true
 
 [git_branch]
-symbol = ""
-style = "bg:#1d2230"
-format = '[[ $symbol $branch ](fg:#769ff0 bg:#1d2230)]($style)'
+symbol = ""
+style = "bg:#0d1a26"
+format = '[[ $symbol $branch ](fg:#00e5ff bg:#0d1a26)]($style)'
 
 [git_status]
-style = "bg:#1d2230"
-format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#1d2230)]($style)'
+style = "bg:#0d1a26"
+format = '[[($all_status$ahead_behind )](fg:#00b4cc bg:#0d1a26)]($style)'
 
 [cmd_duration]
 min_time = 1
-style = 'fg:#e0af68'
-format = "[$duration]($style)" # nf-pl-right_soft_divider, nf-mdi-clock
+style = 'fg:#00e5ff'
+format = "[ $duration]($style) "
 
 [time]
 disabled = false
-time_format = "%R" # Hour:Minute Format
-# style = "bg:#1d2230"
-format = '[[   $time ](fg:#a0a9cb)]($style)'
+time_format = "%R"
+format = '[[   $time ](fg:#006b7d)]($style)'
 
 [character]
-vimcmd_symbol = '[V](bold green) '
+success_symbol = '[❯](bold fg:#00e5ff)'
+error_symbol = '[❯](bold fg:#ff2d6f)'
+vimcmd_symbol = '[V](bold fg:#00e5ff) '
