@@ -59,9 +59,13 @@ config.use_ime = true
 -- local keybind = require 'keybinds'
 config.keys = {
 	{ key = "[", mods = "CTRL", action = wezterm.action.PaneSelect },
-	{ key = "H", mods = "CMD", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	{ key = "V", mods = "CMD", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+	{ key = "V", mods = "CMD", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
+	{ key = "D", mods = "CMD", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 	{ key = "C", mods = "SHIFT|CMD", action = wezterm.action.ActivateCopyMode },
+	{ key = "H", mods = "CMD", action = wezterm.action.AdjustPaneSize({ "Left", 4 }) },
+	{ key = "L", mods = "CMD", action = wezterm.action.AdjustPaneSize({ "Right", 4 }) },
+	{ key = "J", mods = "CMD", action = wezterm.action.AdjustPaneSize({ "Down", 2 }) },
+	{ key = "K", mods = "CMD", action = wezterm.action.AdjustPaneSize({ "Up", 2 }) },
 }
 -- config.key_tables = keybind.key_tables
 
