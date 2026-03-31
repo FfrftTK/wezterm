@@ -85,6 +85,7 @@ end)
 
 -- typography
 config.font_size = 13.0
+config.font = wezterm.font_with_fallback({ "JetBrains Mono", "Noto Color Emoji" })
 
 -- input
 config.use_ime = true
