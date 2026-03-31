@@ -68,7 +68,16 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 		foreground = "#050510"
 	end
 	local edge_foreground = background
-	local title = "   " .. wezterm.truncate_right(tab.active_pane.title, max_width - 1) .. "   "
+	-- 作業ディレクトリのベース名を取得、取れなければプロセスタイトルにフォールバック
+	local cwd = ""
+	local cwd_uri = tab.active_pane.current_working_dir
+	if cwd_uri then
+		local path = cwd_uri.file_path
+		cwd = path:match("([^/]+)/*$") or path
+	else
+		cwd = tab.active_pane.title
+	end
+	local title = "   " .. wezterm.truncate_right(cwd, max_width - 1) .. "   "
 
 	return {
 		{ Background = { Color = edge_background } },
@@ -94,6 +103,15 @@ config.use_ime = true
 -- config.disable_default_key_bindings = true
 -- local keybind = require 'keybinds'
 config.keys = {
+	-- Escape を2回送信: 1回目で IME の変換キャンセル、2回目が Neovim に届く
+	{
+		key = "Escape",
+		mods = "",
+		action = wezterm.action.Multiple({
+			wezterm.action.SendKey({ key = "Escape" }),
+			wezterm.action.SendKey({ key = "Escape" }),
+		}),
+	},
 	{ key = "[", mods = "CTRL", action = wezterm.action.PaneSelect },
 	{ key = "V", mods = "CMD", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
 	{ key = "D", mods = "CMD", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
