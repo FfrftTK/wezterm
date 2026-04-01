@@ -2,6 +2,14 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 config.automatically_reload_config = true
+local function is_windows()
+	return wezterm.target_triple:find("windows") ~= nil
+end
+
+if is_windows() then
+	config.default_domain = "WSL:Ubuntu"
+	config.default_cwd = "~"
+end
 
 -- theme (cyberpunk)
 config.window_background_opacity = 0.88
