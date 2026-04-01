@@ -119,15 +119,6 @@ config.use_ime = true
 -- config.disable_default_key_bindings = true
 -- local keybind = require 'keybinds'
 config.keys = {
-	-- Escape を2回送信: 1回目で IME の変換キャンセル、2回目が Neovim に届く
-	{
-		key = "Escape",
-		mods = "",
-		action = wezterm.action.Multiple({
-			wezterm.action.SendKey({ key = "Escape" }),
-			wezterm.action.SendKey({ key = "Escape" }),
-		}),
-	},
 	{ key = "[", mods = "CTRL", action = wezterm.action.PaneSelect },
 	{
 		key = "V",
