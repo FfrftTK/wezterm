@@ -146,6 +146,18 @@ config.keys = {
 	{ key = "K", mods = mod, action = wezterm.action.AdjustPaneSize({ "Up", 2 }) },
 	{ key = "v", mods = mod, action = wezterm.action.PasteFrom("Clipboard") },
 	{ key = "t", mods = mod, action = wezterm.action.SpawnTab("CurrentPaneDomain") },
+	{
+		key = "[",
+		mods = "SHIFT" .. mod,
+		action = wezterm.action.ActivateTabRelative(-1),
+	},
+	{
+		key = "]",
+		mods = "SHIFT" .. mod,
+		action = wezterm.action.ActivateTabRelative(1),
+	},
+
+	{ key = "r", mods = mod, action = wezterm.action.ActivateTabRelative(1) },
 }
 -- config.key_tables = keybind.key_tables
 
