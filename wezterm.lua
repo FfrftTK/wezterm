@@ -131,19 +131,19 @@ config.keys = {
 	{ key = "[", mods = "CTRL", action = wezterm.action.PaneSelect },
 	{
 		key = "V",
-		mods = is_macos() and "CMD" or "CTRL",
+		mods = mod,
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
 	{
 		key = "D",
-		mods = is_macos() and "CMD" or "CTRL",
+		mods = mod,
 		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
-	{ key = "C", mods = "SHIFT|CMD", action = wezterm.action.ActivateCopyMode },
-	{ key = "H", mods = "CMD", action = wezterm.action.AdjustPaneSize({ "Left", 4 }) },
-	{ key = "L", mods = "CMD", action = wezterm.action.AdjustPaneSize({ "Right", 4 }) },
-	{ key = "J", mods = "CMD", action = wezterm.action.AdjustPaneSize({ "Down", 2 }) },
-	{ key = "K", mods = "CMD", action = wezterm.action.AdjustPaneSize({ "Up", 2 }) },
+	{ key = "C", mods = mod, action = wezterm.action.ActivateCopyMode },
+	{ key = "H", mods = mod, action = wezterm.action.AdjustPaneSize({ "Left", 4 }) },
+	{ key = "L", mods = mod, action = wezterm.action.AdjustPaneSize({ "Right", 4 }) },
+	{ key = "J", mods = mod, action = wezterm.action.AdjustPaneSize({ "Down", 2 }) },
+	{ key = "K", mods = mod, action = wezterm.action.AdjustPaneSize({ "Up", 2 }) },
 }
 -- config.key_tables = keybind.key_tables
 
