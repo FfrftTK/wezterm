@@ -148,12 +148,12 @@ config.keys = {
 	{ key = "t", mods = mod, action = wezterm.action.SpawnTab("CurrentPaneDomain") },
 	{
 		key = "[",
-		mods = "SHIFT" .. mod,
+		mods = "SHIFT|" .. mod,
 		action = wezterm.action.ActivateTabRelative(-1),
 	},
 	{
 		key = "]",
-		mods = "SHIFT" .. mod,
+		mods = "SHIFT|" .. mod,
 		action = wezterm.action.ActivateTabRelative(1),
 	},
 
