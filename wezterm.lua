@@ -2,9 +2,17 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 config.automatically_reload_config = true
+
+-- platform diff config
 local function is_windows()
 	return wezterm.target_triple:find("windows") ~= nil
 end
+
+local function is_macos()
+	return string.find(wezterm.target_triple, "apple%-darwin") ~= nil
+end
+
+local mod = is_macos() and "CMD" or "CTRL"
 
 if is_windows() then
 	config.default_domain = "WSL:Ubuntu"
@@ -121,8 +129,16 @@ config.keys = {
 		}),
 	},
 	{ key = "[", mods = "CTRL", action = wezterm.action.PaneSelect },
-	{ key = "V", mods = "CMD", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	{ key = "D", mods = "CMD", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+	{
+		key = "V",
+		mods = is_macos() and "CMD" or "CTRL",
+		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		key = "D",
+		mods = is_macos() and "CMD" or "CTRL",
+		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+	},
 	{ key = "C", mods = "SHIFT|CMD", action = wezterm.action.ActivateCopyMode },
 	{ key = "H", mods = "CMD", action = wezterm.action.AdjustPaneSize({ "Left", 4 }) },
 	{ key = "L", mods = "CMD", action = wezterm.action.AdjustPaneSize({ "Right", 4 }) },
