@@ -144,7 +144,6 @@ config.keys = {
 	{ key = "L", mods = mod, action = wezterm.action.AdjustPaneSize({ "Right", 4 }) },
 	{ key = "J", mods = mod, action = wezterm.action.AdjustPaneSize({ "Down", 2 }) },
 	{ key = "K", mods = mod, action = wezterm.action.AdjustPaneSize({ "Up", 2 }) },
-	{ key = "c", mods = mod, action = wezterm.action.CopyTo("Clipboard") },
 	{ key = "v", mods = mod, action = wezterm.action.PasteFrom("Clipboard") },
 }
 -- config.key_tables = keybind.key_tables
