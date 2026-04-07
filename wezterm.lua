@@ -112,9 +112,6 @@ end)
 config.font_size = 13.0
 config.font = wezterm.font_with_fallback({ "JetBrains Mono", "Noto Color Emoji" })
 
--- input
-config.use_ime = true
-
 -- keybinds
 -- config.disable_default_key_bindings = true
 -- local keybind = require 'keybinds'
